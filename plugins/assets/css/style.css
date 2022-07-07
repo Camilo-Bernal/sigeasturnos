@@ -1,0 +1,260 @@
+.content center {
+    display: flex;
+}
+
+.margin {
+    margin-left: 100px;
+}
+
+.card {
+    margin-top: 10px;
+}
+
+.card-top-line {
+    border-top: 3px solid #0c5f54;
+}
+
+div.dataTables_length select {
+    width: 40% !important;
+
+}
+
+.bdr {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    overflow: hidden;
+}
+
+.modal-header {
+    color: #ffffff;
+    font-size: 20px;
+    background-color: #065969;
+    width: auto;
+    height: 45px;
+    margin: none;
+    border-top: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.card-header-new {
+    color: rgb(244, 247, 247);
+    background-color: #157e70;
+    width: auto;
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.card-header-new {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    background-color: #157e70;
+    width: auto;
+    height: 45px;
+    margin: none;
+    border-top: none;
+}
+
+.thead-titulo-copy {
+    color: rgb(8, 8, 8);
+    background-color: #b2b4b4;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 20px;
+}
+
+.thead-titulo {
+    color: azure;
+    background-color: #157e70;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.thead-subtitulo {
+    background-color: #d3d3d4;
+}
+
+th,
+td {
+    border: 1px solid rgb(173, 172, 172);
+}
+
+.thead-init {
+    border-top-width: 0px;
+}
+
+.css-button-arrow--sky {
+    min-width: 100px;
+    height: 20px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    overflow: hidden;
+    border-radius: 5px;
+    border: none;
+    background-color: #0c5f54
+}
+
+.btn-primary {
+    background-color: #0c5f54
+}
+
+.css-button-arrow--sky:hover {
+    border-radius: 10px;
+    padding-right: 24px;
+    padding-left: 8px;
+}
+
+.css-button-arrow--sky:hover:after {
+    opacity: 1;
+    right: 10px;
+}
+
+.css-button-arrow--sky:after {
+    content: "\00BB";
+    position: absolute;
+    opacity: 0;
+    font-size: 20px;
+    line-height: 40px;
+    top: 0;
+    right: -20px;
+    transition: 0.4s;
+}
+
+.button-18-row {
+    align-items: center;
+    background-color: #0c5f54;
+    border: 0;
+    border-radius: 10px;
+    color: #ffffff;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.btn-primary-new {
+    align-items: center;
+    background-color: #0c5f54;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+    height: 40px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+/* CSS */
+.button-18 {
+    align-items: center;
+    background-color: #065969;
+    border: 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 120px;
+    min-height: 20px;
+    min-width: 50px;
+    height: 30px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+.button-18-new {
+    align-items: center;
+    background-color: #540339;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-width: 40px;
+    min-height: 40px;
+    min-width: 40px;
+    height: 40px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus {
+    background-color: #065968;
+    color: #ffffff;
+}
+
+.button-18:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+}
+
+.button-18:disabled {
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
