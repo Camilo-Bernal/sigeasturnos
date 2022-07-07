@@ -250,6 +250,7 @@ if (!isset($user)) {
         text-decoration-color: rgb(255, 255, 255);
     }
 </style>
+
 <body class="hold-transition sidebar-mini layout-fixed sidebar-open oss-dragging">
     <div class="wrapper">
         <!-- Navbar -->

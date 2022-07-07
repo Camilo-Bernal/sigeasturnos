@@ -160,8 +160,6 @@ while ($campos = mysqli_fetch_array($consulta)) {
         </li>
       </ul>
 
-     
-      
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
@@ -193,7 +191,7 @@ while ($campos = mysqli_fetch_array($consulta)) {
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="./inicio.php">Inicio</a></li>
-                <li class="breadcrumb-item active">Calendar</li>
+                <li class="breadcrumb-item active">Calendario</li>
               </ol>
             </div>
           </div>

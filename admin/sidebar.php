@@ -38,14 +38,14 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="./empleados.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
-                                
+                                <i class="far fa-circle nav-icon text-success"></i>
+
                                 <p>Lista de empleados</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="./crearEmpleado.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Registrar empleado</p>
                             </a>
                         </li>
@@ -57,19 +57,20 @@
                         </li> -->
                         <li class="nav-item">
                             <a href="./desactivarEmpleado.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Desactivar empleado</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="./activarEmpleados.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Activar empleado</p>
                             </a>
                         </li>
                     </ul>
                 </li>
 
+                <!-- asignación manual -->
                 <li class="nav-item">
                     <a href="" class="nav-link" style="color: white;">
                         <i class="nav-icon fa fa-calendar"></i>
@@ -87,6 +88,37 @@
                         </li>
                         <li class="nav-item">
                             <a href="./planta_temporal.php" class="nav-link" style="color: white;">
+                                <i class="far fa-circle nav-icon text-success"></i>
+                                <p>Planta Temporal</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./OPS-SAS.php" class="nav-link" style="color: white;">
+                                <i class="far fa-circle nav-icon text-success"></i>
+                                <p>OPS-SAS</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Asignacuin automática -->
+                <li class="nav-item">
+                    <a href="" class="nav-link" style="color: white;">
+                        <i class="nav-icon fa fa-calendar"></i>
+                        <p>
+                            <i class="fas fa-angle-left right"></i>
+                            Asignación automática
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="./planta_permanente_auto.php" class="nav-link" style="color: white;">
+                                <i class="far fa-circle nav-icon text-success"></i>
+                                <p>Planta Permanente</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="./planta_temporal_auto.php" class="nav-link" style="color: white;">
                                 <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Planta Temporal</p>
                             </a>
@@ -119,7 +151,7 @@
 
                         <li class="nav-item">
                             <a href="./recargosPlantaTemporal.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Planta Temporal</p>
                             </a>
                         </li>
@@ -129,7 +161,7 @@
                 <!-- Tablas básicas -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link" style="color: white;">
-                        
+
                         <i class="nav-icon fa-solid fa-gears"></i>
                         <p>
                             <i class="fas fa-angle-left right"></i>
@@ -139,35 +171,35 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="./cargos.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Cargos</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="./contratos.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Contratos</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="./generos.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Géneros</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="./profesiones.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Profesiones</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="./servicios.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Servicios</p>
                             </a>
                         </li>
@@ -177,8 +209,8 @@
                 <!-- Novedades -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link" style="color: white;">
-                       
-                        
+
+
                         <i class="nav-icon fa-solid fa-table-list"></i>
                         <p>
                             <i class="fas fa-angle-left right"></i>
@@ -186,17 +218,17 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                       
+
 
                         <li class="nav-item">
                             <a href="./novedades.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Registrar novedad</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="./editarNovedades.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Consultar novedades</p>
                             </a>
                         </li>
@@ -209,27 +241,27 @@
                         <!-- <i class="nav-icon fas fa-table"></i>-->
                         <i class="nav-icon fas fa-chart-pie"></i>
                         <p>
-                        <i class="fas fa-angle-left right"></i>
+                            <i class="fas fa-angle-left right"></i>
                             Reportes
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="./reportes.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Novedades</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="reporRecargo.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Recargos</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="reporteTurnos.php" class="nav-link" style="color: white;">
-                            <i class="far fa-circle nav-icon text-success"></i>
+                                <i class="far fa-circle nav-icon text-success"></i>
                                 <p>Turnos</p>
                             </a>
                         </li>
