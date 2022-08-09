@@ -98,6 +98,12 @@
                                 <p>OPS-SAS</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="./buscarcuadroturnobyid.php" class="nav-link" style="color: white;">
+                                <i class="far fa-circle nav-icon text-success"></i>
+                                <p>Buscar Turno</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

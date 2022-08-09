@@ -296,6 +296,12 @@ if (!isset($user)) {
                                                         <b> Datos empleados</b>
                                                     </th>
                                                 </tr>
+                                                <tr>
+                                                    <th scope="col" colspan="10" class="text-center">
+                                                        <input type=" submit" class="btn button-18" value="Asignar">
+                                                    </th>
+                                                </tr>
+                                                
                                                 <tr class="thead-subtitulo text-center">
 
                                                     <th class="col-sm-1 text-center">Identificación</th>
@@ -303,7 +309,7 @@ if (!isset($user)) {
                                                     <th class="col-sm-2 text-center">Apellidos</th>
                                                     <th class="col-sm-2 text-center">Profesión</th>
                                                     <th class="col-sm-2 text-center">Cargo</th>
-                                                    <th class="col-sm-2 text-center">Asignar</th>
+                                                    <!-- <th class="col-sm-2 text-center">Asignar</th> -->
                                                 </tr>
                                             </thead>
                                             <tbody class="text-center">
@@ -321,11 +327,11 @@ if (!isset($user)) {
                                                         <td><?= $datos['apellidos']; ?></td>
                                                         <td><?= $datos['idProfesion']; ?></td>
                                                         <td><?= $datos['idCargo']; ?></td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <a href="./miCalendario.php? id=<?= $datos['idPersonalAsistencial']; ?>">
                                                                 <i class="fa fa-calendar"></i>
                                                             </a>
-                                                        </td>
+                                                        </td> -->
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>

@@ -48,7 +48,7 @@ if (!isset($user)) {
   }
 
   .fc-week {
-    height: 50px;
+    height: auto;
   }
 
   .fc th {
@@ -62,7 +62,7 @@ if (!isset($user)) {
   }
 
   .fc td.fc-today {
-    background: olivedrab;
+    background: lightgreen;
   }
 
   .color-palette {

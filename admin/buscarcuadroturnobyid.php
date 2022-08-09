@@ -26,9 +26,10 @@ if (!isset($user)) {
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 <style>
     .margin {
@@ -57,8 +58,6 @@ if (!isset($user)) {
         border-right: none;
         overflow: hidden;
     }
-
-
 
     .card-header-new {
         color: rgb(255, 255, 255);
@@ -159,8 +158,6 @@ if (!isset($user)) {
         transition: 0.4s;
     }
 
-
-
     /* CSS */
     .button-18 {
         align-items: center;
@@ -260,78 +257,47 @@ if (!isset($user)) {
                             <div class="card card-top-line mt-3">
                                 <!-- /.card-header -->
                                 <div class="card-body">
-
-                                    <h3 class="card-header text-center mb-4"><b>Asignación de Turnos Automática Planta Temporal</b> </h3>
-                                    <div class="container"> <br />
-
+                                    <h3 class="card-header text-center mb-4"><b>Buscar cuadro de turnos por Identificación</b> </h3>
+                                    <div class="container">
+                                        <br />
                                         <form action="" method="post">
                                             <div class="row justify-content-center">
-                                                <div class="col-sm-1 mt-3">
+                                                <div class="col-sm-2 mt-3">
                                                     <label for="">
-                                                        <b>Profesión</b>
+                                                        <b>N° Identificación</b>
                                                     </label>
                                                 </div>
                                                 <div class="col-sm-2 mt-3">
-                                                    <select class="form-select form-select-sm form-select-padding-y-sm:0 select-css" style="margin-left: 10px;" name="profesiones" id="" aria-label="Default select example">
-                                                        <option>Seleccionar</option>
-                                                        <?php
-                                                        $sql = "SELECT * FROM profesion";
-                                                        $consulta = mysqli_query($miConexion, $sql);
-                                                        while ($campos = mysqli_fetch_array($consulta)) {
-                                                            //$id = $campos['idProfesion'];
-                                                            $profesion = $campos['profesion'];
-                                                        ?>
-                                                            <option value="<?php echo $profesion; ?>"><?php echo $profesion; ?></option>
-                                                        <?php } ?>
-                                                    </select>
+                                                    <input type="number" name="cedula" id="cedula">
                                                 </div>
-                                                <div class="col-sm-9 mt-3">
+                                            </div>
+                                            <div class="row justify-content-center">
+                                                <div class="col-sm-1 mt-4">
                                                     <input type="submit" name="buscar" class="btn button-18" value="Buscar">
                                                 </div>
                                             </div>
                                         </form>
-                                        <br />
+                                        <br>
                                         <table id="example2" class="table table-bordered table-striped bdr">
-                                            <thead class="thead-init">
-                                                <tr class="thead-init thead-titulo ">
-                                                    <th scope="col" colspan="10" class="text-center ">
-                                                        <b> Datos empleados</b>
-                                                    </th>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="col" colspan="10" class="text-center">
-                                                        <input type=" submit" class="btn button-18" value="Asignar">
-                                                    </th>
-                                                </tr>
-                                                <tr class="thead-subtitulo text-center">
-                                                    <th class="col-sm-1 text-center">Identificación</th>
-                                                    <th class="col-sm-2 text-center">Nombres</th>
-                                                    <th class="col-sm-2 text-center">Apellidos</th>
-                                                    <th class="col-sm-2 text-center">Profesión</th>
-                                                    <th class="col-sm-2 text-center">Cargo</th>
-                                                    <!-- <th class="col-sm-2 text-center">Asignar</th> -->
-                                                </tr>
-                                            </thead>
                                             <tbody class="text-center">
                                                 <?php
-                                                $prof = '';
+                                                $byid = '';
                                                 if (isset($_POST['buscar'])) {
-                                                    $prof = $_POST['profesiones'];
+                                                    $byid = $_POST['cedula'];
                                                 }
-                                                $sql = "SELECT * FROM empleados WHERE idContrato ='Planta Temporal' AND idProfesion = '$prof'";
+                                                $sql = "SELECT * FROM empleados WHERE idPersonalAsistencial = '$byid'";
                                                 $consulta = mysqli_query($miConexion, $sql);
                                                 while ($datos = mysqli_fetch_array($consulta)) { ?>
                                                     <tr class="table-secundary">
-                                                        <td><?= $datos['idPersonalAsistencial']; ?></td>
                                                         <td><?= $datos['nombres']; ?></td>
                                                         <td><?= $datos['apellidos']; ?></td>
                                                         <td><?= $datos['idProfesion']; ?></td>
                                                         <td><?= $datos['idCargo']; ?></td>
-                                                        <!-- <td>
+                                                        <td>
                                                             <a href="./miCalendario.php? id=<?= $datos['idPersonalAsistencial']; ?>">
-                                                                <i class="fa fa-calendar"></i>
+                                                                <i class="btn button-18">ir</i>
                                                             </a>
-                                                        </td> -->
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
@@ -358,6 +324,7 @@ if (!isset($user)) {
             <strong>Copyright 2022-2025 <a href="http://www.umariana.edu.co">Univerdasidad Mariana</a>.</strong>
 
         </footer>
+
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->
@@ -366,9 +333,7 @@ if (!isset($user)) {
     </div>
     <!-- ./wrapper -->
 
-
     <script src="../plugins/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- DataTables -->
@@ -381,23 +346,6 @@ if (!isset($user)) {
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
     <!-- page script -->
-    <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "autoWidth": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-        });
-    </script>
 </body>
 
 </html>
