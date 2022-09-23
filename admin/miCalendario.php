@@ -156,7 +156,7 @@ while ($campos = mysqli_fetch_array($consulta)) {
           <a href="./inicio.php" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-        <a href="./Manual de usuario sistema unificado de turnos.pdf" class="nav-link">Manual</a>
+          <a href="./Manual de usuario sistema unificado de turnos.pdf" class="nav-link">Manual</a>
         </li>
       </ul>
 
@@ -226,8 +226,8 @@ while ($campos = mysqli_fetch_array($consulta)) {
       <div class="float-right d-none d-sm-block">
         <b>Versión</b> 1
       </div>
-      <strong>Copyright 2022-2025 <a href="http://www.umariana.edu.co">Univerdasidad Mariana</a>.</strong> 
-      
+      <strong>Copyright 2022-2025 <a href="http://www.umariana.edu.co">Univerdasidad Mariana</a>.</strong>
+
     </footer>
 
     <!-- Control Sidebar -->
@@ -253,6 +253,7 @@ while ($campos = mysqli_fetch_array($consulta)) {
   <script src='./turnosconf/fullcalendar-4.3.1/packages/list/main.js'></script>
   <script src='./turnosconf/fullcalendar-4.3.1/packages/core/locales/es.js'></script>
   <script src='./turnosconf/fullcalendar-4.3.1/packages/bootstrap/main.js'></script>
+  <script src='./turnosconf/fullcalendar-4.3.1/packages/resource-timeline/main.js'></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
@@ -286,6 +287,7 @@ while ($campos = mysqli_fetch_array($consulta)) {
       $('#fest').val(festivo);
     }
   </script>
+
   <!-- Page specific script -->
   <!-- crear caenario -->
   <script>
@@ -293,7 +295,10 @@ while ($campos = mysqli_fetch_array($consulta)) {
       /*       $('.clockpicker').clockpicker(); */
       var calendarEl = document.getElementById('calendarioTurnos')
       var calendar = new FullCalendar.Calendar(calendarEl, {
-        plugins: ['dayGrid', 'timeGrid', 'interaction'],
+
+        plugins: ['customView', 'dayGrid', 'timeGrid', 'interaction', 'resourceTimelinePlugin'],
+        initialView: 'resourceTimeline',
+        
         height: 750,
         contentHeight: 750,
         aspectRatio: 3,
@@ -301,18 +306,28 @@ while ($campos = mysqli_fetch_array($consulta)) {
         droppable: true,
         locale: 'es',
         editable: false,
-        showNonCurrentDates: false,
+
         header: {
           left: 'prev,next today, refrescar',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
+
         customButtons: {
           refrescar: {
             text: "refrescar calendario",
             click: function() {
               location.reload();
             }
+          }
+        },
+
+        views: {
+          customView: {
+            type: 'timelineYear',
+            duration: {
+              days: 500
+            } // Or whatever value you want.
           }
         },
 

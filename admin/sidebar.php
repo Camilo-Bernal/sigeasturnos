@@ -70,6 +70,16 @@
                     </ul>
                 </li>
 
+                <!--  -->
+                <li class="nav-item">
+                    <a href="./buscarcuadroturnobyid.php" class="nav-link" style="color: white;">
+                        <i class="fas fa-magnifying-glass nav-icon"></i>
+                        <p>
+                            Buscar Turno
+                        </p>
+                    </a>
+                </li>
+
                 <!-- asignación manual -->
                 <li class="nav-item">
                     <a href="" class="nav-link" style="color: white;">
@@ -96,12 +106,6 @@
                             <a href="./OPS-SAS.php" class="nav-link" style="color: white;">
                                 <i class="far fa-circle nav-icon text-success"></i>
                                 <p>OPS-SAS</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="./buscarcuadroturnobyid.php" class="nav-link" style="color: white;">
-                                <i class="far fa-circle nav-icon text-success"></i>
-                                <p>Buscar Turno</p>
                             </a>
                         </li>
                     </ul>
