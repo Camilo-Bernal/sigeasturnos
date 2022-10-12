@@ -33,8 +33,10 @@ if (!isset($user)) {
   <link href="./turnosconf/fullcalendar-4.3.1/packages/timegrid/main.css" rel="stylesheet">
   <link href="./turnosconf/fullcalendar-4.3.1/packages/list/main.css" rel="stylesheet">
   <link href="./turnosconf/fullcalendar-4.3.1/packages/bootstrap/main.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/main.min.css">
 </head>
 
 <!-- Estilos personalizados -->
@@ -184,10 +186,9 @@ while ($campos = mysqli_fetch_array($consulta)) {
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1><?php echo "$nombre", ' ', "$apellido"; ?></h1>
-              <h6>CC: <?php echo ($ide); ?></h6>
-            </div>
+
+
+
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="./inicio.php">Inicio</a></li>
@@ -246,15 +247,12 @@ while ($campos = mysqli_fetch_array($consulta)) {
   <script src="./turnosconf/datatables/datatables.min.js"></script>
   <script src="./turnosconf/clockpicker/bootstrap-clockpicker.js"></script>
   <script src='./turnosconf/js/moment-with-locales.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/core/main.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/daygrid/main.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/timegrid/main.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/interaction/main.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/list/main.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/core/locales/es.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/bootstrap/main.js'></script>
-  <script src='./turnosconf/fullcalendar-4.3.1/packages/resource-timeline/main.js'></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/locales-all.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/locales-all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar-scheduler@5.11.3/main.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
@@ -262,7 +260,7 @@ while ($campos = mysqli_fetch_array($consulta)) {
 
   <!-- traer los datos desde la DB  -->
   <?php
-  $sql   = ("SELECT * FROM asignacion WHERE idPersonalAsistencial = $ide");
+  $sql   = ("SELECT * FROM asignacionauto WHERE nombres ='Robert'");
   $resul = mysqli_query($miConexion, $sql);
   ?>
 
@@ -289,237 +287,49 @@ while ($campos = mysqli_fetch_array($consulta)) {
   </script>
 
   <!-- Page specific script -->
-  <!-- crear caenario -->
+  <!-- crear calendario -->
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      /*       $('.clockpicker').clockpicker(); */
-      var calendarEl = document.getElementById('calendarioTurnos')
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendarioTurnos');
       var calendar = new FullCalendar.Calendar(calendarEl, {
-
-        plugins: ['customView', 'dayGrid', 'timeGrid', 'interaction', 'resourceTimelinePlugin'],
-        initialView: 'customView',
-        
-        height: 750,
-        contentHeight: 750,
-        aspectRatio: 3,
+        schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+        initialView: 'resourceTimelineMonth',
+        aspectRatio: 2.29,
         theme: true,
         droppable: true,
         locale: 'es',
         editable: false,
-
-        header: {
-          left: 'prev,next today, refrescar',
+        headerToolbar: {
+          left: 'prev,next',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+          right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth'
         },
 
-        customButtons: {
-          refrescar: {
-            text: "refrescar calendario",
-            click: function() {
-              location.reload();
-            }
-          }
-        },
+        resourceAreaHeaderContent: 'Personal',
+        resources: [
+          <?php
+          while ($campos = mysqli_fetch_array($resul)) { ?> {
+              id: '<?php echo $campos['idProgramacion']; ?>',
+              title: '<?php echo $campos['nombres']; ?>',
+            },
+          <?php } ?>
+        ],
 
-        /* Muestra los eventos que se han guardado en la DB */
         events: [
           <?php
           while ($campos = mysqli_fetch_array($resul)) { ?> {
               id: '<?php echo $campos['idProgramacion']; ?>',
               title: '<?php echo $campos['title']; ?>',
-              servicio: '<?php echo $campos['nombreServicio']; ?>',
               start: '<?php echo $campos['fechaInicio']; ?>T<?php echo $campos['timeStart']; ?>',
               end: '<?php echo $campos['fechaFin']; ?>T<?php echo $campos['timeEnd']; ?>',
               color: '<?php echo $campos['color']; ?>',
-              textColor: '<?php echo $campos['textColor']; ?>'
+              textColor: '<?php echo $campos['textColor']; ?>',
+              resourceId: '<?php echo $campos['idProgramacion']; ?>'
             },
           <?php } ?>
         ],
-
-        dateClick: function(info) {
-          limpiarFormulario();
-          $('#BotonAgregar').show();
-          $('#BotonModificar').hide();
-          $('#BotonBorrar').hide();
-          if (info.allDay) {
-            $('#FechaInicio').val(info.dateStr);
-            $('#FechaFin').val(info.dateStr);
-          } else {
-            let fechaHora = info.date.split("T");
-            $('#FechaInicio').val(fechaHora[0]);
-            $('#FechaFin').val(fechaHora[0]);
-            $('#HoraInicio').val(fechaHora[1].substring(0, 5));
-            $('#HoraFin').val(fechaHora[1].substring(0, 5));
-          }
-          $("#FormularioEventos").modal();
-        },
-
-        eventClick: function(info) {
-          $('#BotonModificar').show();
-          $('#BotonBorrar').show();
-          $('#BotonAgregar').hide();
-
-          $('#Codigo').val(info.event.id);
-          $('#Titulo').val(info.event.title);
-          $('#Servicio').val(info.event.extendedProps.servicio);
-          $('#FechaInicio').val(moment(info.event.start).format("YYYY-MM-DD"));
-          $('#FechaFin').val(moment(info.event.end).format("YYYY-MM-DD"));
-
-          $("#FormularioEventos").modal();
-          console.log(info.event.title);
-          console.log(info.event.extendedProps.servicio);
-        },
-
-        /* Mover o arrastrar eventos */
-        eventDrop: function(info) {
-          $('#Codigo').val(info.event.id);
-          $('#Titulo').val(info.event.title);
-          $('#Servicio').val(info.event.extendedProps.servicio);
-          $('#FechaInicio').val(moment(info.event.start).format("YYYY-MM-DD"));
-          $('#FechaFin').val(moment(info.event.end).format("YYYY-MM-DD"));
-          $('#Servicio').val(info.event.extendedProps.servicio);
-          let registro = recuperarDatosFormulario();
-          modificarRegistro(registro);
-        },
       });
 
-      //Eventos de botones de la aplicación
-      $('#BotonAgregar').click(function() {
-        let registro = recuperarDatosFormulario();
-        agregarRegistro(registro);
-        $("#FormularioEventos").modal('hide');
-      });
-
-      $('#BotonModificar').click(function() {
-        let registro = recuperarDatosFormulario();
-        modificarRegistro(registro);
-        $("#FormularioEventos").modal('hide');
-      });
-
-      $('#BotonBorrar').click(function() {
-        let registro = recuperarDatosFormulario();
-        borrarRegistro(registro);
-        $("#FormularioEventos").modal('hide');
-      });
-
-      // funciones para comunicarse con el servidor via ajax
-      function agregarRegistro(registro) {
-        $.ajax({
-          type: 'POST',
-          url: 'misEventos.php?accion=agregar',
-          data: registro,
-          success: function(msg) {
-            if (msg) {
-              const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 10000,
-                timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.addEventListener('mouseenter', Swal.stopTimer)
-                  toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-              })
-              Toast.fire({
-                icon: 'success',
-                title: 'Turno agregado satisfactoriamente'
-              })
-              location.reload();
-            }
-          },
-          error: function(error) {
-            Swal.fire('Aviso', '¡UPS! hubo un error... ', 'warning');
-          }
-        });
-      }
-
-      function modificarRegistro(registro) {
-        $.ajax({
-          type: 'POST',
-          url: 'misEventos.php?accion=modificar',
-          data: registro,
-          success: function(msg) {
-            const Toast = Swal.mixin({
-              toast: true,
-              position: 'top-end',
-              showConfirmButton: false,
-              delay: 10000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-              }
-            })
-            Toast.fire({
-              icon: 'success',
-              title: 'Turno modificado satisfactoriamente'
-            })
-            location.reload();
-          },
-          error: function(error) {
-            Swal.fire('Aviso', '¡UPS! hubo un error... ', 'warning');
-          }
-        });
-      }
-
-      function borrarRegistro(registro) {
-        Swal.fire({
-          icon: 'warning',
-          title: '¿Desea eliminar el turno?',
-          confirmButtonText: 'Confirmar',
-          showCancelButton: true,
-        }).then((result) => {
-          if (result.isConfirmed) {
-            $.ajax({
-              type: 'POST',
-              url: 'misEventos.php?accion=borrar',
-              data: registro,
-              success: function(msg) {
-                if (msg) {
-                  Swal.fire('¡Eliminado!', '', 'success');
-                  location.reload();
-                }
-              },
-              error: function(error) {
-                Swal.fire('Aviso', '¡UPS! hubo un error... ', 'warning');
-              }
-            });
-          }
-        });
-      }
-
-      // funciones que interactuan con el formulario de entrada de datos
-      function limpiarFormulario() {
-        $('#Codigo').val('');
-        $('#Titulo').val('');
-        $('#Servicio').val('');
-        $('#FechaInicio').val('');
-        $('#FechaFin').val('');
-        $('#HoraInicio').val('');
-        $('#HoraFin').val('');
-        $('#dom').val('');
-        $('#fest').val('');
-        $('#domingo').val('');
-        $('#festivo').val('');
-      }
-
-      function recuperarDatosFormulario() {
-        let registro = {
-          idPrograma: $('#Codigo').val(),
-          title: $('#Titulo').val(),
-          fechaInicio: $('#FechaInicio').val(),
-          fechaFin: $('#FechaFin').val(),
-          idEmpleado: $('#Empleado').val(),
-          nombreServicio: $('#Servicio').val(),
-          dom: $('#dom').val(),
-          fest: $('#fest').val(),
-        };
-        return registro;
-      }
-
-      /* mostrar el calnedario */
       calendar.render();
     });
   </script>

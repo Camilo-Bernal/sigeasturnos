@@ -296,9 +296,7 @@ while ($campos = mysqli_fetch_array($consulta)) {
       var calendarEl = document.getElementById('calendarioTurnos')
       var calendar = new FullCalendar.Calendar(calendarEl, {
 
-        plugins: ['customView', 'dayGrid', 'timeGrid', 'interaction', 'resourceTimelinePlugin'],
-        initialView: 'resourceTimeline',
-        
+        plugins: ['dayGrid', 'timeGrid', 'interaction', 'resourceTimelinePlugin'],        
         height: 750,
         contentHeight: 750,
         aspectRatio: 3,
@@ -319,15 +317,6 @@ while ($campos = mysqli_fetch_array($consulta)) {
             click: function() {
               location.reload();
             }
-          }
-        },
-
-        views: {
-          customView: {
-            type: 'timelineYear',
-            duration: {
-              days: 500
-            } // Or whatever value you want.
           }
         },
 
