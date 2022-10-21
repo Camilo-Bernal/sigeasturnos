@@ -43,28 +43,21 @@ if (!isset($user)) {
 <style>
   html,
   body {
-    /* don't do scrollbars */
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
     font-size: 14px;
-
   }
 
-  .fc-week {
-    height: auto;
+  #calendar {
+    max-width: 1100px;
+    margin: 40px auto;
   }
 
   .fc th {
     padding: 5px 0px;
     vertical-align: middle;
-    background: lightskyblue;
-  }
-
-  .fc td {
-    background: snow;
-  }
-
-  .fc td.fc-today {
-    background: lightgreen;
+    background: #108b7b;
   }
 
   .color-palette {
@@ -258,33 +251,18 @@ while ($campos = mysqli_fetch_array($consulta)) {
   <!-- AdminLTE for demo purposes -->
   <script src="../dist/js/demo.js"></script>
 
-  <!-- traer los datos desde la DB  -->
+  <!-- traer los datos de los turnos desde la DB  -->
+  <!-- Consultamos la base de datos -->
   <?php
-  $sql   = ("SELECT * FROM asignacionauto WHERE nombres ='Robert'");
+  require './lib/conexion.php';
+  $sql = ("SELECT * FROM asignacionauto");
   $resul = mysqli_query($miConexion, $sql);
   ?>
 
-  <script>
-    var domingo = 0;
-    var festivo = 0;
-
-    function verificar() {
-      /* Verifica si el check de dominfo está seleccionado */
-      if (document.getElementById('domingo').checked) {
-        domingo = 1;
-      } else {
-        domingo;
-      }
-      $('#dom').val(domingo);
-      /* Verifica si el check de festivo está seleccionado */
-      if (document.getElementById('festivo').checked) {
-        festivo = 1;
-      } else {
-        festivo;
-      }
-      $('#fest').val(festivo);
-    }
-  </script>
+  <?php
+  $sql = ("SELECT * FROM asignacionauto");
+  $resulta = mysqli_query($miConexion, $sql);
+  ?>
 
   <!-- Page specific script -->
   <!-- crear calendario -->
@@ -304,126 +282,32 @@ while ($campos = mysqli_fetch_array($consulta)) {
           center: 'title',
           right: 'resourceTimelineDay,resourceTimelineWeek,resourceTimelineMonth'
         },
-
-        resourceAreaHeaderContent: 'Personal',
+        resourceAreaHeaderContent: 'Personal Asistencial',
         resources: [
           <?php
-          while ($campos = mysqli_fetch_array($resul)) { ?> {
-              id: '<?php echo $campos['idProgramacion']; ?>',
-              title: '<?php echo $campos['nombres']; ?>',
+          while ($rows = mysqli_fetch_array($resul)) { ?> {
+              id: <?php echo $rows['idPersonalAsistencial']; ?>,
+              title: '<?php echo $rows['nombres']; ?> <?php echo $rows['apellidos']; ?> ',
             },
           <?php } ?>
         ],
-
         events: [
           <?php
-          while ($campos = mysqli_fetch_array($resul)) { ?> {
-              id: '<?php echo $campos['idProgramacion']; ?>',
-              title: '<?php echo $campos['title']; ?>',
-              start: '<?php echo $campos['fechaInicio']; ?>T<?php echo $campos['timeStart']; ?>',
-              end: '<?php echo $campos['fechaFin']; ?>T<?php echo $campos['timeEnd']; ?>',
-              color: '<?php echo $campos['color']; ?>',
-              textColor: '<?php echo $campos['textColor']; ?>',
-              resourceId: '<?php echo $campos['idProgramacion']; ?>'
+          while ($filas = mysqli_fetch_array($resulta)) { ?> {
+              id: <?php echo $filas['idProgramacion']; ?>,
+              title: '<?php echo $filas['title']; ?>',
+              start: '<?php echo $filas['fechaInicio']; ?>',
+              end: '<?php echo $filas['fechaFin']; ?>',
+              color: '<?php echo $filas['color']; ?>',
+              textColor: '<?php echo $filas['textColor']; ?>',
+              resourceId: <?php echo $filas['idPersonalAsistencial']; ?>
             },
           <?php } ?>
-        ],
+        ]
       });
-
       calendar.render();
     });
   </script>
-
-  <!-- FormularioEventos -->
-  <div class="modal fade" id="FormularioEventos" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5><b>Administrar turnos</b></h5>
-          <button type="button" class="close" style="color: #ffffff;" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <!-- captura la id de un evento determinado -->
-          <input type="hidden" id="Codigo">
-
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label>Turno | Horario</label>
-              <select class=" form-control" style="width: 90%;" aria-label="Default select example" name="Titulo" id="Titulo" required>
-                <?php
-                $sql = "SELECT * FROM eventos";
-                $consulta = mysqli_query($miConexion, $sql);
-                while ($campos = mysqli_fetch_array($consulta)) {
-                  $idH = $campos['idTipo'];
-                  $horario = $campos['title'];
-                ?>
-                  <option value="<?php echo $idH; ?>"><?php echo $horario; ?></option>
-                <?php } ?>
-              </select>
-            </div>
-            <div class="form-group col-md-6">
-              <label>Servicio</label>
-              <select class=" form-control" style="width: 90%;" aria-label="Default select example" name="" id="Servicio" required>
-                <?php
-                $sql = "SELECT * FROM servicios";
-                $consulta = mysqli_query($miConexion, $sql);
-                while ($campos = mysqli_fetch_array($consulta)) {
-                  $idS = $campos['idServicio'];
-                  $servicio = $campos['nombreServicio'];
-                ?>
-                  <option value="<?php echo $idS; ?>"><?php echo $servicio; ?></option>
-                <?php } ?>
-              </select>
-            </div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label>Fecha de inicio:</label>
-              <div class="input-group" data-autoclose="true" style="width: 90%;">
-                <input type="date" id="FechaInicio" value="" class="form-control" />
-              </div>
-            </div>
-            <div class="form-group col-md-6">
-              <label>Fecha de fin:</label>
-              <div class="input-group" data-autoclose="true" style="width: 90%;">
-                <input type="date" id="FechaFin" value="" class="form-control" />
-              </div>
-            </div>
-          </div>
-
-          <!-- checkbox -->
-          <div class="form-row">
-            <div class="form-group col-md-6">
-              <label>Es festivo? </label>
-              <input type="checkbox" name="festivo" id="festivo">
-            </div>
-            <div class="form-group col-md-6">
-              <label>Es domingo? </label>
-              <input type="checkbox" name="domingo" id="domingo">
-            </div>
-          </div>
-          <!-- captura la identificación del empleado que se le asigna los turnos -->
-          <input type="hidden" name="Empleado" id="Empleado" value="<?php echo "$ide"; ?>">
-          <!-- captura el valor del chck de domingo -->
-          <input type="hidden" name="dom" id="dom">
-          <!-- captura el valor del chck de festivo -->
-          <input type="hidden" name="fest" id="fest">
-
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" id="BotonAgregar" class="btn btn-success" onclick="verificar()">Agregar</button>
-          <button type=" button" id="BotonModificar" class="btn btn-warning" onclick="verificar()">Modificar</button>
-          <button type=" button" id="BotonBorrar" class="btn btn-danger">Borrar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 
 </html>

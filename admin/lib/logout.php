@@ -5,5 +5,5 @@
 
   session_destroy();
 
-  header('Location: /sisaturnos/');
+  header('Location: /sigeasturnos/index.php');
 ?>
